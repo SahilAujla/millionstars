@@ -6,11 +6,14 @@
   "scripts": {
     "dev": "vite --port 5179",
     "build": "vite build",
-    "preview": "vite preview --port 5180"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.67.0",
     "@types/three": "^0.187.0",
     "typescript": "^7.0.2",
-    "vite": "^6.4.5"
+    "vite": "^6.4.5",
+    "wrangler": "^4.158.0"
   }
 }
