@@ -334,7 +334,7 @@ function showText(text: string) {
   const t = text.trim().slice(0, 60);
   if (!t) { showShape(lastShape); return; }
   currentShape = 'text'; currentText = t;
-  faceFront = true; faceFrontUntil = time + 2.5; intensityGoal = 0.42;
+  faceFront = true; faceFrontUntil = time + 2.5; intensityGoal = 0.34;
   setTargets(textToShape(t, sys.count));
   lastInteraction = time;
   emit('stars:morph', { shape: 'text', text: t });

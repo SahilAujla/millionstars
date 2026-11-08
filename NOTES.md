@@ -48,3 +48,11 @@ and it bursts. Share-to-X intent, save PNG, `?t=<text>` deep links, procedural W
 6. Record a 10–15 s clip for the tweet: galaxy intro → type a handle → hold → release.
 7. Possible virality features: multi-line text, `?t=` autoplay sequence, "spell my name" OG image generated
    per `?t=` (needs a worker), WebGPU path for 4M particles.
+
+## Incident log
+- 04:22 — `wrangler pages project create` (wrangler 4.158) delegated to Workers and rewrote `package.json`
+  (added `@cloudflare/vite-plugin` + `wrangler` devDeps, pruned `three` from node_modules because a racing
+  `npm i` at scaffold time had left it out of `dependencies`). Fixed at 04:28: `three@0.170.0` is now a real
+  dependency, the Cloudflare devDeps are removed. Always deploy with plain `wrangler pages deploy dist …`.
+- 04:26 — `textToShape` measured text with left alignment but drew centred, shifting wide strings a quarter
+  width left (clipped). Fixed by setting `textAlign='center'` before measuring.

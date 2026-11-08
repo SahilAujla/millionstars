@@ -416,6 +416,8 @@ export function textToShape(text: string, n: number): ShapeData {
 
   // fit the largest font size with 5% padding
   const availW = CW * 0.9, availH = CH * 0.9;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'alphabetic';
   ctx.font = FONT(100);
   const m0 = ctx.measureText(text);
   const w0 = Math.max(1, (m0.actualBoundingBoxLeft || 0) + (m0.actualBoundingBoxRight || m0.width));
@@ -425,8 +427,8 @@ export function textToShape(text: string, n: number): ShapeData {
   const m = ctx.measureText(text);
   const asc = m.actualBoundingBoxAscent || size * 0.72;
   const desc = m.actualBoundingBoxDescent || size * 0.2;
-  const left = m.actualBoundingBoxLeft || m.width / 2;
-  const right = m.actualBoundingBoxRight || m.width / 2;
+  const left = m.actualBoundingBoxLeft ?? m.width / 2;
+  const right = m.actualBoundingBoxRight ?? m.width / 2;
   ctx.fillStyle = '#fff';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'alphabetic';
