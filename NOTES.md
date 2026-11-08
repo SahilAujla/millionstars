@@ -40,8 +40,8 @@ and it bursts. Share-to-X intent, save PNG, `?t=<text>` deep links, procedural W
 1. **Mobile untested.** Touch hold → collapse uses a 170 ms timer vs OrbitControls drag. Check iOS Safari
    float-texture support (GPUComputationRenderer needs EXT_color_buffer_float; fall back to HalfFloat if
    `gpu.init()` errors — currently we just throw and show a message).
-2. Burst was only verified by reasoning + one blurry screenshot (an HMR reload interrupted the check).
-   Hold the mouse in the live site and confirm the explosion looks good; tune `uBurst * 46.0` in main.ts.
+2. Burst verified on production at 04:29 (hold 1.6 s → galaxy collapses to a bright ball; release → radial
+   streaks). Feel is tunable via `uBurst * 46.0` and the 250 ms `springTarget = 0.12` window in main.ts.
 3. Galaxy core is still hot. Lower the bulge density in `shapes.ts` or add a soft per-shape intensity.
 4. The credit link in the bottom-right (`ui.ts`, href `#`) should point at Sahil's X profile.
 5. No analytics, no custom domain. `millionstars.pages.dev` is the only URL.
